@@ -23,6 +23,8 @@ import thermopy.units as units
 from thermopy.constants import ideal_gas_constant
 _R = ideal_gas_constant[0]
 
+DATADIR = '/usr/share/thermopy'
+
 
 class Compound(object):
     u"""
@@ -181,8 +183,7 @@ class Database(object):
         Create the instance and the elements at boot, otherwise be
         prepared to face huge computation times.
         """
-        self.db = parse(str(os.path.dirname(os.path.dirname(__file__)) +
-                        '/databases/burcat_thr.xml')).getroot()
+        self.db = os.path.join(DATADIR, 'databases/burcat_thr.xml')
 
     def list_compound(self, cas_or_formula):
         """

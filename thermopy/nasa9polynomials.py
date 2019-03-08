@@ -52,6 +52,8 @@ import numpy as np
 from thermopy.constants import ideal_gas_constant
 _R = ideal_gas_constant[0]
 
+DATADIR = '/usr/share/thermopy'
+
 
 class Compound(object):
     u"""
@@ -456,9 +458,7 @@ class Database(object):
 
     def __init__(self):
         u"""Initializes the database."""
-        xmlPath = os.path.join(
-            os.path.dirname(__file__), os.pardir, 'databases',
-            'nasa9polynomials.xml')
+        xmlPath = os.path.join(DATADIR, 'databases/nasa9polynomials.xml')
         self._nasa9 = ET.parse(os.path.abspath(xmlPath))
         self._root = self._nasa9.getroot()
 
